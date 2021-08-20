@@ -1,1 +1,13 @@
-<p>deposit works!</p>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="amount">
+            enter the amount to deposit
+          </label>
+          <input type="text" id="amount" class="form-control" name="amount" ngModel required>
+        </div>
+        <button class="btn btn-primary" type="submit">submit</button>
+      </form>
+    </div>
+  </div>
