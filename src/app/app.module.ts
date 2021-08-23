@@ -7,6 +7,8 @@ import { DepositComponent } from './deposit/deposit.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { OpeationService } from './services/operation.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,9 +25,12 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    OpeationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
