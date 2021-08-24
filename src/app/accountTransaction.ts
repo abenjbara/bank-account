@@ -2,7 +2,7 @@ export class accountTransaction{
   
 
   constructor( 
-    public custumerId: number,
+    public clientId: number,
     public accountId: number,
     public amount: number
     ){  }

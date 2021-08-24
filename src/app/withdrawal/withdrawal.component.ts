@@ -4,15 +4,15 @@ import { accountTransaction } from '../accountTransaction';
 import { OpeationService } from '../services/operation.service';
 
 @Component({
-  selector: 'app-deposit',
-  templateUrl: './deposit.component.html',
-  styleUrls: ['./deposit.component.scss']
+  selector: 'app-withdrawal',
+  templateUrl: './withdrawal.component.html',
+  styleUrls: ['./withdrawal.component.scss']
 })
-export class DepositComponent implements OnInit {
+export class WithdrawalComponent implements OnInit {
 
   constructor(private operationService: OpeationService) { }
 
-  amountToDeposit: number = 1;
+  amountToWithdrawal: number = 1;
   showErrorAlert: boolean = false;
 
   ngOnInit(): void {
@@ -20,11 +20,11 @@ export class DepositComponent implements OnInit {
   }
 
   onSubmit(form: NgForm){
-    this.showErrorAlert = this.operationService.depositeMoney(new accountTransaction(3,6,this.amountToDeposit));
+    this.showErrorAlert = this.operationService.withdrawalMoney(new accountTransaction(3,6,this.amountToWithdrawal));
   }
 
-  validDeposit(){
-    return this.amountToDeposit == null || this.amountToDeposit > 0;
+  validWithdrawal(){
+    return this.amountToWithdrawal == null || this.amountToWithdrawal > 0;
   }
 
 }

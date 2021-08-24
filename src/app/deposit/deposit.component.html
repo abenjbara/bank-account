@@ -1,17 +1,15 @@
 <div class="row">
-    <div class="col-sm-6 col-sm-offset-2">
+    <div class="col-sm-8">
         <div *ngIf="showErrorAlert" class="alert alert-success">
             <strong>Success!</strong> Successfull deposit!
         </div>
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="form-group row">
-          <label for="amount" class="col-sm-8">
-            enter the amount to deposit:
-          </label>
-          <input type="number" min ="1" id="amount" class="form-control col-sm-4" name="amount" [(ngModel)]="amountToDeposit" required>
-          <label *ngIf="!validDeposit()" class="text-danger">The amount must be positif</label>
+          <div class="col"> <label for="amount" >Enter the amount to deposit:</label> </div>
+          <div class="col"> <input type="number" min ="1" id="amount" class="form-control col-sm-4" name="amount" [(ngModel)]="amountToDeposit" required> </div>
+          <div> <label *ngIf="!validDeposit()" class="text-danger">The amount must be positif</label> </div>
         </div>
-        <button class="btn btn-primary" type="submit" [disabled]="f.invalid">submit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="f.invalid">deposit</button>
       </form>
     </div>
   </div>
