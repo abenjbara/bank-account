@@ -13,14 +13,28 @@ export class DepositComponent implements OnInit {
   constructor(private operationService: OpeationService) { }
 
   amountToDeposit: number = 1;
-  showErrorAlert: boolean = false;
+  showSuccessAlert: string = '';
+  showErrorAlert = '';
 
   ngOnInit(): void {
-    this.showErrorAlert = false;
+    this.showSuccessAlert = '';
+    this.showErrorAlert = '';
   }
 
   onSubmit(form: NgForm){
-    this.showErrorAlert = this.operationService.depositeMoney(new accountTransaction(3,6,this.amountToDeposit));
+    this.operationService.depositeMoney(new accountTransaction(this.amountToDeposit))
+        .subscribe(
+          (message: string) => {
+            console.log('succes depositeMoney: ' + message);
+            this.showSuccessAlert = message;
+            this.showErrorAlert = '';
+          },
+          (error: any) => {
+            console.log('backend retourn this error: ' + JSON.parse(error.error).message);
+            this.showSuccessAlert = '';
+            this.showErrorAlert = JSON.parse(error.error).message;
+          }
+        );
   }
 
   validDeposit(){

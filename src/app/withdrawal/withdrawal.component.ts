@@ -13,14 +13,28 @@ export class WithdrawalComponent implements OnInit {
   constructor(private operationService: OpeationService) { }
 
   amountToWithdrawal: number = 1;
-  showErrorAlert: boolean = false;
+  showSuccessAlert = '';
+  showErrorAlert = '';
 
   ngOnInit(): void {
-    this.showErrorAlert = false;
+    this.showSuccessAlert = '';
+    this.showErrorAlert = '';
   }
 
   onSubmit(form: NgForm){
-    this.showErrorAlert = this.operationService.withdrawalMoney(new accountTransaction(3,6,this.amountToWithdrawal));
+    this.operationService.withdrawalMoney(new accountTransaction(this.amountToWithdrawal))
+    .subscribe(
+      (message: string) => {
+        console.log('succes withdrawal: ' + message);
+        this.showSuccessAlert = message;
+        this.showErrorAlert = '';
+      },
+      (error: any) => {
+        console.log('backend retourn this error: ' + JSON.parse(error.error).message);
+        this.showSuccessAlert = '';
+        this.showErrorAlert = JSON.parse(error.error).message;
+      }
+    );
   }
 
   validWithdrawal(){

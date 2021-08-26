@@ -13,40 +13,19 @@ export class OpeationService{
      */
     depositeMoney(transactionDTO: accountTransaction): any{
         console.log('deposit money service called with this transaction:' , transactionDTO);
-        this.httpClient
-        .post('http://localhost:8080/bank/deposit', transactionDTO, {responseType: 'text'})
-        .subscribe(
-          (message) => {
-            console.log('succes depositeMoney: ' + message);
-            return true;
-          },
-          (error) => {
-            console.log('backend retourn this error: ' + error.message);
-            
-            return false;
-          }
-        );       
+        return this.httpClient
+        .post('http://localhost:8080/customers/3/accounts/6/deposit', transactionDTO, {responseType: 'text'})
+        ;       
     }
 
     /**
      * CAll back-end service in order to deposit money
      */
-     withdrawalMoney(transactionDTO: accountTransaction): any{
+    withdrawalMoney(transactionDTO: accountTransaction): any{
       console.log('withraw service with transaction:' , transactionDTO);
-      this.httpClient
-      .post('http://localhost:8080/bank/withdrawal', transactionDTO, {responseType: 'text'})
-      .subscribe(
-        (message) => {
-          console.log('succes depositeMoney: ' + message);
-          return true;
-        },
-        (error) => {
-          console.log('backend retourn this error: ' + error.message);
-          
-          return false;
-        }
-      );       
-  }
+      return this.httpClient
+      .post('http://localhost:8080/customers/3/accounts/6/withdrawal', transactionDTO, {responseType: 'text'});     
+    }
 
     private handleError(error: HttpErrorResponse) {
         if (error.status === 0) {

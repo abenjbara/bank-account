@@ -1,7 +1,10 @@
 <div class="row">
     <div class="col-sm-8">
-        <div *ngIf="showErrorAlert" class="alert alert-success">
-            <strong>Success!</strong> Successfull deposit!
+        <div *ngIf="showSuccessAlert.length > 0" class="alert alert-success">
+            <strong>{{showSuccessAlert}}</strong>
+        </div>
+        <div *ngIf="showErrorAlert.length > 0" class="alert alert-danger">
+          <strong>{{showErrorAlert}}</strong>
         </div>
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="form-group row">
