@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { accountTransaction } from "../accountTransaction";
 import { throwError } from "rxjs";
+import { TransactionHistoryDTO } from "../TransactionHistoryDTO";
 
 @Injectable()
 export class OpeationService{
@@ -26,6 +27,15 @@ export class OpeationService{
       return this.httpClient
       .post('http://localhost:8080/customers/3/accounts/6/withdrawal', transactionDTO, {responseType: 'text'});     
     }
+
+    /**
+     * Call back-end service in lorder to get transactions history
+     */
+    transactionsHistory(): any {
+      console.log('transaction history service');
+      return this.httpClient
+            .get<TransactionHistoryDTO>('http://localhost:8080/customers/3/accounts/6/history');
+    } 
 
     private handleError(error: HttpErrorResponse) {
         if (error.status === 0) {

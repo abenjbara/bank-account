@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OpeationService } from './services/operation.service';
 import { WithdrawalComponent } from './withdrawal/withdrawal.component';
+import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { WithdrawalComponent } from './withdrawal/withdrawal.component';
     AppComponent,
     DepositComponent,
     HomeComponent,
-    WithdrawalComponent
+    WithdrawalComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,

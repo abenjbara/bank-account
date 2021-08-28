@@ -1,0 +1,9 @@
+<div class="col-sm-6">
+    <H4>This is the history of your operations:</H4>
+    <ul class="list-group" *ngFor="let transaction of transactions">
+        <li class="list-group-item" [ngClass]="{
+            'list-group-item-info':transaction.type === 'DEPOSIT',
+            'list-group-item-secondary':transaction.type=== 'WITHDRAWAL'}">
+        {{ transaction.type  }} of {{ transaction.amount  }}</li>
+    </ul>
+</div>

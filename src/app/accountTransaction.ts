@@ -1,7 +1,10 @@
 export class accountTransaction{
   
+  public amount: number;
+  public type: string;
 
-  constructor( 
-    public amount: number
-  ){  }
+  constructor(amount: number){  
+    this.amount = amount;
+    this.type = 'WITHDRAWAL';
+  }
 }

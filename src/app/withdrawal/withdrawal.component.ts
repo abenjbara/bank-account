@@ -25,12 +25,10 @@ export class WithdrawalComponent implements OnInit {
     this.operationService.withdrawalMoney(new accountTransaction(this.amountToWithdrawal))
     .subscribe(
       (message: string) => {
-        console.log('succes withdrawal: ' + message);
         this.showSuccessAlert = message;
         this.showErrorAlert = '';
       },
       (error: any) => {
-        console.log('backend retourn this error: ' + JSON.parse(error.error).message);
         this.showSuccessAlert = '';
         this.showErrorAlert = JSON.parse(error.error).message;
       }
